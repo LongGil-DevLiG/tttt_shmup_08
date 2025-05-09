@@ -4,6 +4,9 @@ public class InputManager : MonoBehaviour
 {
     public static InputManager Instance { get ; private set; }
 
+    [SerializeField] protected Vector3 touchWorldPos;
+    public Vector3 TouchWorldPos { get => touchWorldPos; }
+
     [SerializeField] protected Vector3 mouseWorldPos;
     public Vector3 MouseWorldPos { get => mouseWorldPos; }
     private void Awake()
@@ -23,7 +26,7 @@ public class InputManager : MonoBehaviour
         // #if UNITY_ANDROID || UNITY_IOS
         //     this.GetTouchPosition();
         // #elif UNITY_EDITOR || UNITY_STANDALONE_WIN || UNITY_STANDALONE_OSX || UNITY_STANDALONE_LINUX
-        //     this.GetMousePos();
+        //     this.GetMousePosition();
         // #elif UNITY_WEBGL
         //     if (IsMobileDevice())
         //     {
@@ -31,10 +34,12 @@ public class InputManager : MonoBehaviour
         //     }
         //     else
         //     {
-        //         this.GetMousePos();
+        //         this.GetMousePosition();
         //     }    
         // #endif
         this.GetTouchPosition();
+        // this.GetMousePosition();
+        // Chỉ cần gọi GetTouchPosition() hoac GetMousePosition() trong FixedUpdate để cập nhật vị trí liên tục
     }
 
 protected virtual void GetTouchPosition()
@@ -75,7 +80,7 @@ protected virtual void GetTouchPosition()
             touchPosition.z = Camera.main.WorldToScreenPoint(transform.position).z;
             
             // Chuyển đổi tọa độ màn hình sang tọa độ thế giới
-            this.mouseWorldPos = Camera.main.ScreenToWorldPoint(touchPosition);
+            this.touchWorldPos = Camera.main.ScreenToWorldPoint(touchPosition);
             
             // Xử lý thêm cho WebGL nếu cần thiết
             #if UNITY_WEBGL
@@ -109,7 +114,7 @@ private bool IsMobileDevice()
 }
 #endif
 
-protected virtual void GetMousePos()
+protected virtual void GetMousePosition()
 {
     this.mouseWorldPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 }
