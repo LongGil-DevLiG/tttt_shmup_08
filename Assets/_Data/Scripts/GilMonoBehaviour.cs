@@ -6,6 +6,10 @@ public class GilMonoBehaviour : MonoBehaviour
     {
         this.LoadComponents();
     }
+    protected virtual void Start()
+    {
+        // Override this method in derived classes to initialize components
+    }
     protected virtual void Reset()
     {
         this.LoadComponents();

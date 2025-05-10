@@ -5,6 +5,7 @@ public class BulletSpawner : Spawner
     public static BulletSpawner Instance { get; private set; }
 
     public static int BulletPrefabIndex { get; private set; } = 0;
+    // Chỉ số của prefab đạn trong danh sách prefab
 
     protected override void Awake()
     {

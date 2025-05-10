@@ -222,7 +222,7 @@ Camera:
     width: 1
     height: 1
   near clip plane: 0.3
-  far clip plane: 1000
+  far clip plane: 100
   field of view: 34
   orthographic: 1
   orthographic size: 6
@@ -351,7 +351,7 @@ GameObject:
   - component: {fileID: 851957078}
   m_Layer: 0
   m_Name: Ship
-  m_TagString: Untagged
+  m_TagString: Ship
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,6 +374,51 @@ Transform:
   - {fileID: 2141017982}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &858305009
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 858305010}
+  - component: {fileID: 858305011}
+  m_Layer: 0
+  m_Name: DespawnByTime
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &858305010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858305009}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 867924148}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &858305011
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 858305009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05defaca30004dc4fa2d06db1cf27fef, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnTime: 5
 --- !u!1 &867924147
 GameObject:
   m_ObjectHideFlags: 0
@@ -405,6 +450,7 @@ Transform:
   m_Children:
   - {fileID: 1603583517}
   - {fileID: 1531736984}
+  - {fileID: 858305010}
   m_Father: {fileID: 1115938320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &871284345
@@ -540,6 +586,52 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   targetPosition: {x: 0, y: -5, z: 0}
   speed: 20
+--- !u!1 &941891808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 941891809}
+  - component: {fileID: 941891810}
+  m_Layer: 0
+  m_Name: DespawnByDistance
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &941891809
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941891808}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1672947940}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &941891810
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 941891808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfef9e8957b9b17489e5ce173c29d75e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  despawnDistance: 12
+  target: {fileID: 851957078}
 --- !u!1 &973225833
 GameObject:
   m_ObjectHideFlags: 0
@@ -765,7 +857,7 @@ GameObject:
   - component: {fileID: 1531736984}
   - component: {fileID: 1531736985}
   m_Layer: 0
-  m_Name: BulletFly
+  m_Name: OrbitalBulletFly
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,10 +887,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1531736983}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1c2873bc0b4691547a19894920b1a5ca, type: 3}
+  m_Script: {fileID: 11500000, guid: e6d7ba9007643694cb60ea03612b84c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 10
+  orbitSpeed: 90
+  orbitRadius: 1.5
+  playerTransform: {fileID: 851957078}
 --- !u!1 &1603583516
 GameObject:
   m_ObjectHideFlags: 0
@@ -917,6 +1011,7 @@ Transform:
   m_Children:
   - {fileID: 1332451114}
   - {fileID: 2012147341}
+  - {fileID: 941891809}
   m_Father: {fileID: 1115938320}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012147340
