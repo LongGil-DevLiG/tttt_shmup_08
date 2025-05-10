@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShipShooting : MonoBehaviour
 {
     [SerializeField] protected bool isShooting = true;
-    [SerializeField] protected Transform bulletPrefab;
+    // Biến này có thể được điều chỉnh từ Inspector để bật/tắt bắn
     
     [Header("Shooting Config")]
     [SerializeField] protected float shootingDelay = 0.5f;  // Thời gian giữa các phát bắn
@@ -27,7 +27,10 @@ public class ShipShooting : MonoBehaviour
         }
 
         // Bắn đạn
-        Instantiate(this.bulletPrefab, this.transform.position, Quaternion.identity);
+        Transform newBullet = BulletSpawner.Instance.SpawnPrefab(BulletSpawner.BulletPrefabIndex, transform.position, Quaternion.identity);
+        if (newBullet == null) return;
+        
+        newBullet.gameObject.SetActive(true);
         shootingTimer = shootingDelay;  // Reset timer
     }
 
