@@ -6,11 +6,18 @@ public class DespawnByTime : Despawn
     [SerializeField] protected float despawnTime = 5f;  // Thời gian để hủy đối tượng
 
     private float spawnTime;
+
+    // protected override void Awake()
+    // {
+    //     this.spawnTime = Time.time;
+    //     // Lưu thời gian hiện tại khi đối tượng được tạo ra
+    // }
+    
     // Thời gian mà đối tượng được tạo ra
-    protected override void Awake()
+    private void OnEnable()
     {
         this.spawnTime = Time.time;
-        // Lưu thời gian hiện tại khi đối tượng được tạo ra
+        // Lưu thời gian hiện tại mỗi khi đối tượng được kích hoạt
     }
 
     protected override bool CanDespawn()

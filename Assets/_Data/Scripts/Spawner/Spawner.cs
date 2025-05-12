@@ -67,9 +67,11 @@ public abstract class Spawner : GilMonoBehaviour
         // {
         //     Debug.LogError("Prefab not found: " + obj.name);
         // }
+
         this.poolObject.Add(obj);
         obj.gameObject.SetActive(false);
     }
+    
 
     public virtual Transform SpawnPrefab(int index, Vector3 position, Quaternion rotation)
     {

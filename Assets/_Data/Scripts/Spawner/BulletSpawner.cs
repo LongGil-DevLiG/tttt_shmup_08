@@ -10,6 +10,12 @@ public class BulletSpawner : Spawner
     protected override void Awake()
     {
         base.Awake();
+        if (Instance != null)
+        {
+            Debug.LogError("Multiple instances of BulletSpawner detected!");
+            Destroy(gameObject);
+            return;
+        }
         BulletSpawner.Instance = this;
     }
 }
