@@ -3,7 +3,7 @@ using UnityEngine;
 public class DespawnByDistance : Despawn
 {
     [Header("Despawn Config")]
-    [SerializeField] protected float despawnDistance = 12f;  // Khoảng cách để hủy đối tượng
+    [SerializeField] protected float despawnDistance = 14f;  // Khoảng cách để hủy đối tượng
     [SerializeField] protected Transform target;  // Đối tượng mục tiêu để tính khoảng cách
 
     protected override void LoadComponents()

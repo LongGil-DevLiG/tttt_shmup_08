@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class JunkDespawn : DespawnByTime
+public class JunkDespawn : DespawnByDistance
 {
     protected override void DespawnObject()
     {

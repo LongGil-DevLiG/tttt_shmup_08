@@ -26,18 +26,9 @@ public class JunkRandom : GilMonoBehaviour
 
     protected virtual void JunkSpawning()
     {
-    //     if (this.junkCtrl == null) return;
-    //     // Kiểm tra xem junkCtrl đã được gán hay chưa
-    //     if (this.junkCtrl.JunkSpawner == null) return;
-    //     // Kiểm tra xem JunkSpawner đã được gán hay chưa
-
-    //     int randomIndex = Random.Range(0, this.junkCtrl.JunkSpawner.Prefabs.Count);
-    //     // Tạo một chỉ số ngẫu nhiên trong khoảng từ 0 đến số lượng prefab rác
-
-    //     this.junkCtrl.JunkSpawner.Spawn(randomIndex);
-    //     // Gọi phương thức Spawn để sinh ra rác với chỉ số ngẫu nhiên
-    // 
-        Vector3 pos = transform.position;
+        Transform randomSpawnPoint = this.junkCtrl.JunkSpawnPoints.GetRandom();
+        // Lấy một điểm sinh ngẫu nhiên từ SpawnPoints
+        Vector3 pos = randomSpawnPoint.position;
         // Lấy vị trí của đối tượng hiện tại
         Quaternion ros = transform.rotation;
         // Lấy góc quay của đối tượng hiện tại
@@ -45,7 +36,7 @@ public class JunkRandom : GilMonoBehaviour
         // Gọi phương thức SpawnPrefab để sinh ra rác với chỉ số ngẫu nhiên, vị trí và góc quay
         obj.gameObject.SetActive(true);
         // Kích hoạt đối tượng rác sau khi sinh ra
-        Invoke("JunkSpawning", 1f);
-        // Gọi lại phương thức JunkSpawning sau 1 giây để tiếp tục sinh ra rác
+        Invoke("JunkSpawning", 2f);
+        // Gọi lại phương thức JunkSpawning sau N giây để tiếp tục sinh ra rác
     }
 }
