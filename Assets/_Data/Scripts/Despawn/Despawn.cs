@@ -12,7 +12,7 @@ public abstract class Despawn : GilMonoBehaviour
         if (!this.CanDespawn()) return;
         this.DespawnObject();
     }
-    protected virtual void DespawnObject()
+    public virtual void DespawnObject()
     {
         // if (this.transform.position.y < -10f)
         // {

@@ -54,20 +54,6 @@ public abstract class Spawner : GilMonoBehaviour
 
     public virtual void Despawn(Transform obj)
     {
-        // if (obj == null) return;
-
-        // // Tìm prefab trong danh sách prefab
-        // Transform prefab = this._prefabs.Find(p => p.name == obj.name);
-        // if (prefab != null)
-        // {
-        //     obj.gameObject.SetActive(false);
-        //     obj.SetParent(prefab);
-        // }
-        // else
-        // {
-        //     Debug.LogError("Prefab not found: " + obj.name);
-        // }
-
         this.poolObject.Add(obj);
         obj.gameObject.SetActive(false);
     }

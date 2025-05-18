@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class OrbitalBuletDespawn : DespawnByTime
+public class OrbitalBulletDespawn : DespawnByTime
 {
-    protected override void DespawnObject()
+    public override void DespawnObject()
     {
         BulletSpawner.Instance.Despawn(transform.parent);
     }

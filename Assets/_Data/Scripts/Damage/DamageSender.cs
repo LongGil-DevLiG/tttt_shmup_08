@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DamageSender : MonoBehaviour
+public class DamageSender : GilMonoBehaviour
 {
     [SerializeField] protected float damage = 50f;
     // Giá trị sát thương
@@ -8,7 +8,7 @@ public class DamageSender : MonoBehaviour
     public virtual void SendDamage(Transform objectToDamage)
     {
         if (objectToDamage == null) return;
-        DamageReceiver damageReceiver = objectToDamage.GetComponent<DamageReceiver>();
+        DamageReceiver damageReceiver = objectToDamage.GetComponentInChildren<DamageReceiver>();
         // Lấy thành phần DamageReceiver từ đối tượng nhận sát thương
         if (damageReceiver == null) return;
         this.SendDamage(damageReceiver);
@@ -20,13 +20,13 @@ public class DamageSender : MonoBehaviour
         if (damageReceiver == null) return;
         damageReceiver.DeductHealth(this.damage);
         // Gửi sát thương đến đối tượng nhận sát thương
-        this.DestroyObject();
+        // this.DestroyObject();
         // Gọi phương thức hủy đối tượng
     }
 
-    protected virtual void DestroyObject()
-    {
-        Destroy(transform.parent.gameObject);
-        // Hủy đối tượng cha
-    }
+    // protected virtual void DestroyObject()
+    // {
+    //    Destroy(transform.parent.gameObject);
+    //     // Hủy đối tượng cha
+    // }
 }

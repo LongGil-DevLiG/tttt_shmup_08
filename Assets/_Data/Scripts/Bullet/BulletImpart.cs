@@ -1,16 +1,18 @@
 using UnityEngine;
+using UnityEngine.UIElements;
 
-[RequireComponent(typeof(CapsuleCollider2D))]
-[RequireComponent(typeof(Rigidbody2D))]
+// [RequireComponent(typeof(CapsuleCollider2D))]
+// [RequireComponent(typeof(Rigidbody2D))]
 public class BulletImpart : BulletAbstract
 {
     [Header("Bullet Impart")]
     [SerializeField] protected CapsuleCollider2D capsulecollider2D;
+
     // Tham chiếu đến CapsuleCollider2D để quản lý va chạm của viên đạn
     [SerializeField] protected Rigidbody2D _rigidbody2D;
     // Tham chiếu đến Rigidbody2D để quản lý vật lý của viên đạn
 
-    protected virtual void OnTriggerEnter2D(Collider2D other)
+    protected virtual void OnTriggerEnter(Collider other)
     {
         // // Kiểm tra va chạm với các đối tượng khác
         // if (other.CompareTag("Player"))
@@ -27,7 +29,7 @@ public class BulletImpart : BulletAbstract
     
         this.bulletCtrl.DamageSender.SendDamage(other.transform);
         // Gửi sát thương đến đối tượng va chạm
-        Debug.Log(transform.name + " :BulletImpart OnTriggerEnter2D", gameObject);
+        // Debug.Log(transform.name + " :BulletImpart OnTriggerEnter", gameObject);
         // Ghi lại thông tin va chạm
     }
 

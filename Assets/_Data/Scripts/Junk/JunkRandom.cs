@@ -33,6 +33,8 @@ public class JunkRandom : GilMonoBehaviour
         Quaternion ros = transform.rotation;
         // Lấy góc quay của đối tượng hiện tại
         Transform obj = this.junkCtrl.JunkSpawner.SpawnPrefab(JunkSpawner.JunkPrefabIndex, pos, ros);
+        // int randomIndex = JunkSpawner.Instance.GetRandomJunkPrefabIndex();
+        // Transform junk = JunkSpawner.Instance.SpawnPrefab(randomIndex, pos, ros);
         // Gọi phương thức SpawnPrefab để sinh ra rác với chỉ số ngẫu nhiên, vị trí và góc quay
         obj.gameObject.SetActive(true);
         // Kích hoạt đối tượng rác sau khi sinh ra
