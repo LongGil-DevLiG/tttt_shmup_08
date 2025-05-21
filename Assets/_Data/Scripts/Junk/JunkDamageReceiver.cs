@@ -3,7 +3,7 @@ using UnityEngine;
 public class JunkDamageReceiver : DamageReceiver
 {
     [Header("Junk Damage Receiver")]
-    [SerializeField] protected RockCtrl rockCtrl;
+    [SerializeField] protected JunkCtrl rockCtrl;
 
     protected override void LoadComponents()
     {
@@ -14,7 +14,7 @@ public class JunkDamageReceiver : DamageReceiver
     protected virtual void LoadRockCtrl()
     {
         if (this.rockCtrl != null) return;
-        this.rockCtrl = transform.parent.GetComponent<RockCtrl>();
+        this.rockCtrl = transform.parent.GetComponent<JunkCtrl>();
         Debug.Log($"Load RockCtrl: {this.rockCtrl}", this);
     }
 
@@ -22,7 +22,7 @@ public class JunkDamageReceiver : DamageReceiver
     {
         base.OnDead();
         this.rockCtrl.JunkDespawn.DespawnObject();
-        Debug.LogWarning("Despawn junk by distance", this);
+        // Debug.LogWarning("Despawn junk by distance", this);
     }
 
 }

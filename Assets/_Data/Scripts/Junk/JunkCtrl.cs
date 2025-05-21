@@ -2,35 +2,23 @@ using UnityEngine;
 
 public class JunkCtrl : GilMonoBehaviour
 {
-    [SerializeField] protected JunkSpawner junkSpawner;
-    // Tham chiếu đến JunkSpawner để quản lý việc sinh ra rác
-    public JunkSpawner JunkSpawner => this.junkSpawner;
-    // Thuộc tính để truy cập JunkSpawner từ bên ngoài
+    [SerializeField] private JunkDespawn junkDespawn;
+    // Tham chiếu đến JunkDespawn để quản lý việc hủy đối tượng đá
+    public JunkDespawn JunkDespawn => this.junkDespawn;
+    // Thuộc tính để truy cập JunkDespawn từ bên ngoài
 
-    [SerializeField] protected JunkSpawnPoints junkSpawnPoints;
-    // Tham chiếu đến SpawnPoints để quản lý các điểm sinh rác
-    public JunkSpawnPoints JunkSpawnPoints => this.junkSpawnPoints;
-    // Thuộc tính để truy cập SpawnPoints từ bên ngoài
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadJunkSpawner();
-        this.LoadSpawnPoints();
-        // Gọi các phương thức để tải các thành phần JunkSpawner và SpawnPoints
+        this.LoadJunkDespawn();
+        // Gọi phương thức để tải thành phần JunkDespawn
     }
 
-    protected virtual void LoadJunkSpawner()
+    protected virtual void LoadJunkDespawn()
     {
-        if (this.junkSpawner != null) return;
-        this.junkSpawner = GetComponent<JunkSpawner>();
-        Debug.Log(transform.name + " :JunkCtrl load JunkSpawner", gameObject);
+        if (this.junkDespawn != null) return;
+        this.junkDespawn = GetComponentInChildren<JunkDespawn>();
+        Debug.Log(transform.name + " :RockCtrl load JunkDespawn", gameObject);
+        // Tải thành phần JunkDespawn từ đối tượng hiện tại
     }
-
-    protected virtual void LoadSpawnPoints()
-    {
-        if (this.junkSpawnPoints != null) return;
-        this.junkSpawnPoints = Transform.FindObjectsByType<JunkSpawnPoints>(FindObjectsSortMode.None)[0];
-        Debug.Log(transform.name + " :JunkCtrl load SpawnPoints", gameObject);
-    }
-
 }

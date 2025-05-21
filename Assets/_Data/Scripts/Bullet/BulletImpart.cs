@@ -36,25 +36,25 @@ public class BulletImpart : BulletAbstract
     protected override void LoadComponents()
     {
         base.LoadComponents();
-        this.LoadCapsuleCollider2D();
-        this.LoadRigidbody2D();
+        // this.LoadCapsuleCollider2D();
+        // this.LoadRigidbody2D();
         // Gọi các phương thức để tải các thành phần CapsuleCollider2D và Rigidbody2D
     }
-    protected virtual void LoadCapsuleCollider2D()
-    {
-        if (this.capsulecollider2D != null) return;
-        this.capsulecollider2D = GetComponent<CapsuleCollider2D>();
-        Debug.Log(transform.name + " :BulletImpart load CapsuleCollider2D", gameObject);
-        // Tải thành phần CapsuleCollider2D từ đối tượng hiện tại
-    }
+    // protected virtual void LoadCapsuleCollider2D()
+    // {
+    //     if (this.capsulecollider2D != null) return;
+    //     this.capsulecollider2D = GetComponent<CapsuleCollider2D>();
+    //     Debug.Log(transform.name + " :BulletImpart load CapsuleCollider2D", gameObject);
+    //     // Tải thành phần CapsuleCollider2D từ đối tượng hiện tại
+    // }
 
-    protected virtual void LoadRigidbody2D()
-    {
-        if (this._rigidbody2D != null) return;
-        this._rigidbody2D = GetComponent<Rigidbody2D>();
-        Debug.Log(transform.name + " :BulletImpart load Rigidbody2D", gameObject);
-        // Tải thành phần Rigidbody2D từ đối tượng hiện tại
-    }
+    // protected virtual void LoadRigidbody2D()
+    // {
+    //     if (this._rigidbody2D != null) return;
+    //     this._rigidbody2D = GetComponent<Rigidbody2D>();
+    //     Debug.Log(transform.name + " :BulletImpart load Rigidbody2D", gameObject);
+    //     // Tải thành phần Rigidbody2D từ đối tượng hiện tại
+    // }
 
 
 }

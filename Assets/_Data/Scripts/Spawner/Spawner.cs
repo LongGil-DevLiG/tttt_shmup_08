@@ -75,7 +75,24 @@ public abstract class Spawner : GilMonoBehaviour
         newPrefab.parent = this.holder;
         return newPrefab;
     }
+    public virtual Transform SpawnPrefab(Transform prefab, Vector3 position, Quaternion rotation)
+    {
+        if (prefab == null)
+        {
+            Debug.LogError("Prefab is null.");
+            return null;
+        }
 
+        if (!this._prefabs.Contains(prefab))
+        {
+            Debug.LogWarning("Prefab not found in the prefab list. Still attempting to spawn.");
+        }
+
+        Transform newPrefab = this.GetObjectFromPool(prefab);
+        newPrefab.SetPositionAndRotation(position, rotation);
+        newPrefab.parent = this.holder;
+        return newPrefab;
+    }
     protected virtual Transform GetObjectFromPool(Transform prefab)
     {
         foreach (Transform obj in this.poolObject)

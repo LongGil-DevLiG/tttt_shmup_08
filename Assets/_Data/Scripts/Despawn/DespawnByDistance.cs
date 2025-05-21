@@ -16,14 +16,14 @@ public class DespawnByDistance : Despawn
         if (this.target != null) return;
 
         // Tìm đối tượng MainShip trong scene
-        GameObject ship = GameObject.FindWithTag("Ship");
+        GameObject ship = GameObject.FindWithTag("Player");
         if (ship != null)
         {
             this.target = ship.transform;
         }
         else
         {
-            Debug.LogError("No Ship found in the scene.");
+            Debug.LogError("No Player found in the scene.");
         }
     }
 
