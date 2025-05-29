@@ -1999,6 +1999,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   touchWorldPos: {x: 0, y: 0, z: 0}
   mouseWorldPos: {x: 0, y: 0, z: 0}
+  normalTimeScale: 1
+  slowTimeScale: 0.1
+  slowDownSpeed: 2
+  speedUpSpeed: 3
+  inputTimeoutDuration: 0.1
+  uiSlowFactor: 0.3
 --- !u!4 &973225835
 Transform:
   m_ObjectHideFlags: 0
